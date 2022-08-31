@@ -1,0 +1,25 @@
+<%- include("header") -%>
+
+
+<main class="form-signin w-100 m-auto mx-40-percent pt-10rem text-center">
+  <form>
+    <img class="mb-4" src="" alt="TSS Logo" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Please Sign-Up</h1>
+
+    <div class="form-floating input">
+      <input type="text" class="form-control top" id="floatingInput" placeholder="name@example.com" required autofocus>
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating input">
+      <input type="password" class="form-control bottom" id="floatingPassword" placeholder="Password" required>
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign-Up</button>
+    <p class="mt-1">or <a href="/login">Login</a></p>
+    <p class="mt-5 mb-3 text-muted">&copy; The Space Station</p>
+  </form>
+</main>
+
+
+<%- include("footer") -%>

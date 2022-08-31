@@ -1,0 +1,67 @@
+<%- include("partials/header") -%>
+
+<section class="px-5">
+  <div class="py-5">
+    <h1 class="text-center"><%= gameName %> Stats</h1>
+  </div>
+
+  <div class="pb-5">
+    <form class="" action="<%= gameName %>" method="post">
+      <label for="">Search By Clan ID:</label>
+      <input type="text" name="clanId" placeholder="E.g. 10908">
+      <input type="submit" value="Find Stats">
+    </form>
+  </div>
+
+
+  <div class="row justify-content-start pb-5">
+    <div class="col-3">
+      <p>You can find a clan's tag in the url bar on their main page.</p>
+    </div>
+    <div class="col-3">
+      <div class="dropend">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Show Example
+        </button>
+        <ul class="dropdown-menu">
+          <li><img src="images/evio-clan-tag.png" alt="img"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <table class="table caption-top">
+    <caption><%= clanName %></caption>
+    <thead>
+      <tr>
+        <!-- <th scope="col">#</th> -->
+        <th scope="col">Username</th>
+        <th scope="col">Total Kills</th>
+        <th scope="col">K/D</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+
+      <% clanMembers.forEach(function(member){ %>
+
+        <tr>
+          <!-- <th scope="row">1</th> -->
+          <td><%=member.username%></td>
+          <td><%=member.totalKills%></td>
+          <td><%=member.kdRatio%></td>
+        </tr>
+
+      <% }); %>
+
+
+    </tbody>
+  </table>
+</section>
+
+<script src="game-stats/js/scripts.js" charset="utf-8"></script>
+
+</script>
+
+<%- include("partials/footer") -%>
