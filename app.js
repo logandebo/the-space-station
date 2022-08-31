@@ -1,13 +1,10 @@
-// import fetch from "node-fetch";
-
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const request = require("request");
-// const nodeFetch = require("node-fetch");
 
-// const promise = nodeFetch.fetch
 
 
 app = express();
@@ -16,7 +13,7 @@ app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/tssDB")
+mongoose.connect(`mongodb+srv://Logandebo:${process.env.PASSWORD}@cluster0.xiuzuyo.mongodb.net/tssDB`)
 
 const videogameSchema = new mongoose.Schema({
   name: {
@@ -218,64 +215,12 @@ app.route("/game-stats/:gameName")
 
 
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
 
-
-app.listen(3000, function(){
-  console.log("Server running on port 3000");
+app.listen(port, function(){
+  console.log("Server is running successfully");
 });
-
-
-
-
-// function getMemberObjects(body){
-//
-//     const jsonBody = JSON.parse(body);
-//     const clanMembersInfo = jsonBody.field_deployed;
-//     const clanMemberIds = [];
-//     const clanMembers = [];
-//
-//
-//     // clanMembersInfo.forEach(function(member)
-//     for (member of clanMembersInfo){
-//       clanMemberIds.push(member.target_id);
-//
-//       request(`https://ev.io/user/${member.target_id}?_format=json`, function(err, response, body){
-//         // console.log(JSON.parse(body));
-//         var memberData = JSON.parse(body);
-//
-//         var newMember = {
-//           username: memberData.name[0].value,
-//           // brWins: memberData.field_battle_royale_wins[0].value,
-//           brWinsWeekly: memberData.field_battle_royale_wins_weekly[0].value,
-//           totalKills: memberData.field_kills[0].value,
-//           kdRatio: memberData.field_k_d[0].value,
-//         };
-//         // console.log(newMember);
-//         clanMembers.push(newMember);
-//
-//       });
-//     };
-//
-//
-//   return newPromise;
-// };
-//
-//
-// async function renderEvioStatPage(body, req, res){
-//   getMemberObjects(body).then(function(message){
-//     console.log(message);
-//   });
-//   // setTimeout(function(){
-//   //   console.log(clanMembers);
-//   // }, 500)
-//   // const log = console.log(clanMembers);
-//   console.log("Should have printed");
-//
-//   res.render("evio-stat-page", {
-//     gameName: req.params.gameName,
-//     clanName: "clanName",
-//     clanMemberIds: ["clanMemberIds"],
-//     totalClanPoints: "totalClanPoints"
-// });
-// };
